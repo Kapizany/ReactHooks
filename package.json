@@ -1,0 +1,9 @@
+{
+  "name": "Aulas",
+  "version": "1",
+  "description": "Curso Treina Web de React Hooks",
+  "main": "index.js",
+  "repository": "https://github.com/Kapizany/ReactHooks.git",
+  "author": "Kapizany <kapizany@gmail.com>",
+  "license": "MIT"
+}
