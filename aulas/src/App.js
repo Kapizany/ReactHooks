@@ -1,5 +1,8 @@
 import React, {Component, useState, useEffect, useRef} from 'react';
 import './App.css';
+import ThemeProvider from './data/ThemeProvider';
+import Teste from './ui/Teste';
+
 document.title = "Aulas";
 class Counter extends Component{
   constructor(props){
@@ -51,24 +54,24 @@ function Counter2(props){
 
   return (
     <>
-      <br /> <br /> <br /><br /> <br /> <br /><br /> <br /> <br />
-      <input type="text" value={title} onChange={(event) => setTitle(event.target.value)} />
-      <br /> <br /> <br />
-      {title}
-      <br /> <br /> <br />
+    <br /> <br/><br />
       <button ref={button} onClick={() => counter.current += 1}>
         Função: {counter.current}
       </button>
-      <br /> <br /> <br /><br /> <br /> <br /><br /> <br /> <br />
+      <br /> <br /> <br />
     </>
   )
 }
 
 function App() {
+
   return (
     <div className="App">
-      <Counter />
-      <Counter2 />
+      <ThemeProvider>
+        <Counter />
+        <Counter2 />
+        <Teste />
+      </ThemeProvider>
     </div>
   );
 }

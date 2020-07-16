@@ -1,18 +1,12 @@
 import React from 'react';
-import { useRef, useEffect, useState} from 'react';
+import { useRef, useEffect, useState, useContext} from 'react';
 import {TimeService} from '../data/services/TimeServices';
+import {VideoStore} from '../data/video/VideoContext';
 
-const _selectedVideo = {
-    id: 1,
-    title: 'Futebol',
-    duration: 8,
-    url: 'https://cdn.videvo.net/videvo_files/video/premium/video0122/small_watermarked/111%20Factory_preview.webm',
-    cover: 'https://cdn.videvo.net/videvo_files/video/premium/video0122/customThumbnails/soccer_thumb_01.jpg'
-};
 
 export default function VideoPlayer(){
-
-    const video = _selectedVideo;
+    const [videoState] = useContext(VideoStore);
+    const video = videoState.selectedVideo;
     const videoRef = useRef();
     const progressTimer = useRef();
     const [isPlaying, setPlay] = useState(false);
