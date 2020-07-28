@@ -1,7 +1,8 @@
-import React, {Component, useState, useEffect, useRef} from 'react';
+import React, {Component, /*useState, useEffect,*/ useRef} from 'react';
 import './App.css';
 import ThemeProvider from './data/ThemeProvider';
 import Teste from './ui/Teste';
+import Lista from './ui/Lista';
 
 document.title = "Aulas";
 class Counter extends Component{
@@ -26,7 +27,7 @@ class Counter extends Component{
 function Counter2(props){
   //const [counter, setCounter] = useState(0);
   const counter = useRef(0);
-  const [title, setTitle] = useState('');
+  //const [title, setTitle] = useState('');
   //const button = createRef();
   const button = useRef();
   
@@ -35,11 +36,11 @@ function Counter2(props){
     document.title = title
   }, [title])*/
 
-  useEffect(() => {
+  /*useEffect(() => {
     setInterval(() => {  
       console.log(counter);
     },2000)
-  }, [])
+  }, [])*/
 
   /*useEffect(() => {
     function updateScroll(){
@@ -72,6 +73,7 @@ function App() {
         <Counter2 />
         <Teste />
       </ThemeProvider>
+      <Lista />
     </div>
   );
 }

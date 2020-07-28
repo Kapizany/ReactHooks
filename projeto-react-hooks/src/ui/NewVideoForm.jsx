@@ -1,6 +1,8 @@
-import React, {useState} from 'react';
+import React, {useState, useContext} from 'react';
+import {VideoStore} from '../data/video/VideoContext';
 
 export default function NewVideoForm(){
+    const [, videoDispatch] = useContext(VideoStore);
     const [title, setTitle] = useState('');
     const [duration, setDuration] = useState('');
     const [url, setUrl] = useState('');
@@ -14,6 +16,10 @@ export default function NewVideoForm(){
             cover
         };
         //salvar
+        videoDispatch({
+            type:'add',
+            value: NewVideo
+        });
 
         reset();
     }
