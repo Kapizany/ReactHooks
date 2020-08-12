@@ -1,8 +1,9 @@
-import React, {useState, useReducer} from 'react';
-import {myReducer, myState} from './ListaReducer';
+import React, {useState} from 'react';
+//import { myState} from './ListaReducer';
+import useMeuHook from '../data/hooks/useMeuHook';
 
 export default function Lista(){
-    const [list, setList] = useReducer(myReducer, myState);
+    const [list, setList] = useMeuHook( []);
     const [name, setName] = useState("");
 
     function add(newItem){
@@ -13,9 +14,9 @@ export default function Lista(){
         setList({type:'remove', value:{id}});
     }
 
-    function update(newItem){
+    /*function update(newItem){
         setList({type:'update',value:newItem});
-    }
+    }*/
 
 
     return (

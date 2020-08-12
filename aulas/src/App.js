@@ -1,8 +1,12 @@
-import React, {Component, /*useState, useEffect,*/ useRef} from 'react';
+import React, {Component, /*useState, useEffect,*/ useRef, useEffect} from 'react';
 import './App.css';
 import ThemeProvider from './data/ThemeProvider';
 import Teste from './ui/Teste';
 import Lista from './ui/Lista';
+import ExemploUseCallback from './ui/ExempleUseCallback';
+import {useOnlineStatus} from './data/hooks/useOnlineStatus';
+import useOnScreen from './data/hooks/useOnScreen';
+import useKeyPress from './data/hooks/useKeyPress';
 
 document.title = "Aulas";
 class Counter extends Component{
@@ -65,7 +69,14 @@ function Counter2(props){
 }
 
 function App() {
+  const isOnline = useOnlineStatus();
+  const buttonRef = useRef();
+  const isVisible = useOnScreen(buttonRef, '10px');
+  const isEnterPressed = useKeyPress('Enter'); 
 
+  useEffect(() => {
+    console.log(isVisible);
+  }, [isVisible]);
   return (
     <div className="App">
       <ThemeProvider>
@@ -74,6 +85,12 @@ function App() {
         <Teste />
       </ThemeProvider>
       <Lista />
+      <ExemploUseCallback />
+      {isOnline ? 'Você está conectado': 'Você desconectou!'} <br />
+      {isEnterPressed? 'Enter está pressionado' : 'Nada de Enter'}
+      <br /> <br /> <br /> <br /> <br /> <br /><br /><br /><br /><br /><br /><br /><br />
+      <br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
+      <button ref={buttonRef}> Botão </button>
     </div>
   );
 }
